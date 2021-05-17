@@ -41,6 +41,26 @@ func preOrderTraversalV2(root *TreeNode) []interface{} {
 	return ret
 }
 
+func preOrderTraversal(root *TreeNode) (ret []interface{}) {
+	//root -> left -> right
+
+	stack := make([]*TreeNode, 0)
+
+	for root != nil || len(stack) > 0 {
+		for root != nil {
+			ret = append(ret, root.Val)
+			stack = append(stack, root)
+			root = root.Left
+		}
+		//pop
+		node := stack[len(stack)-1]
+		stack = stack[:len(stack)-1]
+		root = node.Right
+	}
+
+	return ret
+}
+
 func inOrderTraversalV1(root *TreeNode) {
 	if root == nil {
 		return
@@ -69,6 +89,26 @@ func inOrderTraversalV2(root *TreeNode) []interface{} {
 		dummy = n.Right
 	}
 	return ret
+}
+
+func inOrderTraversal(root *TreeNode) (ret []interface{}) {
+	//left -> root -> right
+	stack := make([]*TreeNode, 0)
+
+	for root != nil || len(stack) > 0 {
+		for root != nil {
+			stack = append(stack, root)
+			root = root.Left
+		}
+
+		node := stack[len(stack)-1]
+		stack = stack[:len(stack) - 1]
+		ret	= append(ret, node.Val)
+
+		root = node.Right
+	}
+
+	return
 }
 
 func postOrderTraversalV1(root *TreeNode) {
@@ -115,6 +155,10 @@ func postOrderTraversalV2(root *TreeNode) []interface{} {
 	return ret
 }
 
+func postOrderTraversal(root *TreeNode) (ret []interface{}) {
+	return ret
+}
+
 //【1， 2， 3， 4， 5， nil, nil, nil, nil, nil, nil】
 func GenerateTree(values []interface{}) *TreeNode {
 	var dummy *TreeNode
@@ -132,36 +176,38 @@ func GenerateTree(values []interface{}) *TreeNode {
 	return dummy
 }
 
+func GenerateNode(val interface{}, left, right *TreeNode) TreeNode {
+	node := TreeNode{
+		Val:   val,
+		Left:  left,
+		Right: right,
+	}
+	return node
+}
+
 //go run  tree.go traversal_tree.go
 func main() {
-	root := &TreeNode{
-		Val:   1,
-		Left:  &TreeNode{
-			Val:   2,
-			Left:  &TreeNode{
-				Val:   3,
-				Left:  nil,
-				Right: nil,
-			},
-			Right: &TreeNode{
-				Val:   4,
-				Left:  nil,
-				Right: nil,
-			},
-		},
-		Right: &TreeNode{
-			Val:   5,
-			Left:  nil,
-			Right: &TreeNode{
-				Val:   6,
-				Left:  nil,
-				Right: nil,
-			},
-		},
-	}
+	/**
+					  a
+				b          c
+				   d          e
+				f      g         h
+	 */
+	var root, a, b, c, d, e, f, g, h TreeNode
+	a = GenerateNode("a", &b, &c)
+	b = GenerateNode("b", nil, &d)
+	c = GenerateNode("c", nil, &e)
+	d = GenerateNode("d", &f, &g)
+	e = GenerateNode("e", nil, &h)
+	f = GenerateNode("f", nil, nil)
+	g = GenerateNode("g", nil, nil)
+	h = GenerateNode("h", nil, nil)
+	root = a
 
-	fmt.Println(preOrderTraversalV2(root))
-	fmt.Println(inOrderTraversalV2(root))
+	fmt.Println(preOrderTraversalV2(&root))
+	fmt.Println(preOrderTraversal(&root))
+	fmt.Println(inOrderTraversalV2(&root))
+	fmt.Println(inOrderTraversal(&root))
 	//postOrderTraversalV1(root)
-	fmt.Println(postOrderTraversalV2(root))
+	fmt.Println(postOrderTraversalV2(&root))
 }
