@@ -1,17 +1,19 @@
 package main
 
-import "fmt"
+import (
+	"fmt"
+	"github.com/intrsokx/leetcode/model/treeModel"
+)
 
 //遍历二叉树(前序、中序、后序)
-//type TreeNode struct {
+//type treeModel.TreeNode struct {
 //	Val   interface{}
-//	Left  *TreeNode
-//	Right *TreeNode
+//	Left  *treeModel.TreeNode
+//	Right *treeModel.TreeNode
 //}
 
-
 //recursion
-func preOrderTraversalV1(root *TreeNode) {
+func preOrderTraversalV1(root *treeModel.TreeNode) {
 	if root == nil {
 		return
 	}
@@ -19,13 +21,13 @@ func preOrderTraversalV1(root *TreeNode) {
 	preOrderTraversalV1(root.Left)
 	preOrderTraversalV1(root.Right)
 }
-func preOrderTraversalV2(root *TreeNode) []interface{} {
+func preOrderTraversalV2(root *treeModel.TreeNode) []interface{} {
 	if root == nil {
 		return nil
 	}
 	ret := make([]interface{}, 0)
 	dummy := root
-	stack := make([]*TreeNode, 0)
+	stack := make([]*treeModel.TreeNode, 0)
 
 	for dummy != nil || len(stack) > 0 {
 		for dummy != nil {
@@ -41,10 +43,10 @@ func preOrderTraversalV2(root *TreeNode) []interface{} {
 	return ret
 }
 
-func preOrderTraversal(root *TreeNode) (ret []interface{}) {
+func preOrderTraversal(root *treeModel.TreeNode) (ret []interface{}) {
 	//root -> left -> right
 
-	stack := make([]*TreeNode, 0)
+	stack := make([]*treeModel.TreeNode, 0)
 
 	for root != nil || len(stack) > 0 {
 		for root != nil {
@@ -61,7 +63,7 @@ func preOrderTraversal(root *TreeNode) (ret []interface{}) {
 	return ret
 }
 
-func inOrderTraversalV1(root *TreeNode) {
+func inOrderTraversalV1(root *treeModel.TreeNode) {
 	if root == nil {
 		return
 	}
@@ -69,13 +71,13 @@ func inOrderTraversalV1(root *TreeNode) {
 	fmt.Printf("%v\t", root.Val)
 	inOrderTraversalV1(root.Right)
 }
-func inOrderTraversalV2(root *TreeNode) []interface{} {
+func inOrderTraversalV2(root *treeModel.TreeNode) []interface{} {
 	if root == nil {
 		return nil
 	}
 	ret := make([]interface{}, 0)
 	dummy := root
-	stack := make([]*TreeNode, 0)
+	stack := make([]*treeModel.TreeNode, 0)
 
 	for dummy != nil || len(stack) > 0 {
 		for dummy != nil {
@@ -91,9 +93,9 @@ func inOrderTraversalV2(root *TreeNode) []interface{} {
 	return ret
 }
 
-func inOrderTraversal(root *TreeNode) (ret []interface{}) {
+func inOrderTraversal(root *treeModel.TreeNode) (ret []interface{}) {
 	//left -> root -> right
-	stack := make([]*TreeNode, 0)
+	stack := make([]*treeModel.TreeNode, 0)
 
 	for root != nil || len(stack) > 0 {
 		for root != nil {
@@ -102,8 +104,8 @@ func inOrderTraversal(root *TreeNode) (ret []interface{}) {
 		}
 
 		node := stack[len(stack)-1]
-		stack = stack[:len(stack) - 1]
-		ret	= append(ret, node.Val)
+		stack = stack[:len(stack)-1]
+		ret = append(ret, node.Val)
 
 		root = node.Right
 	}
@@ -111,7 +113,7 @@ func inOrderTraversal(root *TreeNode) (ret []interface{}) {
 	return
 }
 
-func postOrderTraversalV1(root *TreeNode) {
+func postOrderTraversalV1(root *treeModel.TreeNode) {
 	if root == nil {
 		return
 	}
@@ -120,16 +122,17 @@ func postOrderTraversalV1(root *TreeNode) {
 	fmt.Printf("%v\n", root.Val)
 
 }
+
 //左->右->根
 //当左右都访问后才能访问根
-func postOrderTraversalV2(root *TreeNode) []interface{} {
+func postOrderTraversalV2(root *treeModel.TreeNode) []interface{} {
 	if root == nil {
 		return nil
 	}
 	ret := make([]interface{}, 0)
 	dummy := root
-	stack := make([]*TreeNode, 0)
-	var lastVisited *TreeNode
+	stack := make([]*treeModel.TreeNode, 0)
+	var lastVisited *treeModel.TreeNode
 
 	for dummy != nil || len(stack) > 0 {
 		for dummy != nil {
@@ -155,59 +158,33 @@ func postOrderTraversalV2(root *TreeNode) []interface{} {
 	return ret
 }
 
-func postOrderTraversal(root *TreeNode) (ret []interface{}) {
+func postOrderTraversal(root *treeModel.TreeNode) (ret []interface{}) {
 	return ret
-}
-
-//【1， 2， 3， 4， 5， nil, nil, nil, nil, nil, nil】
-func GenerateTree(values []interface{}) *TreeNode {
-	var dummy *TreeNode
-	if len(values) == 0 {
-		return dummy
-	}
-	
-	for _, val := range values {
-		_ = &TreeNode{
-			Val:   val,
-			Left:  nil,
-			Right: nil,
-		}
-	}
-	return dummy
-}
-
-func GenerateNode(val interface{}, left, right *TreeNode) TreeNode {
-	node := TreeNode{
-		Val:   val,
-		Left:  left,
-		Right: right,
-	}
-	return node
 }
 
 //go run  tree.go traversal_tree.go
 func main() {
 	/**
-					  a
-				b          c
-				   d          e
-				f      g         h
-	 */
-	var root, a, b, c, d, e, f, g, h TreeNode
-	a = GenerateNode("a", &b, &c)
-	b = GenerateNode("b", nil, &d)
-	c = GenerateNode("c", nil, &e)
-	d = GenerateNode("d", &f, &g)
-	e = GenerateNode("e", nil, &h)
-	f = GenerateNode("f", nil, nil)
-	g = GenerateNode("g", nil, nil)
-	h = GenerateNode("h", nil, nil)
+		  a
+	b          c
+	   d          e
+	f      g         h
+	*/
+	var root, a, b, c, d, e, f, g, h *treeModel.TreeNode
+	a = treeModel.GenerateNode("a", b, c)
+	b = treeModel.GenerateNode("b", nil, d)
+	c = treeModel.GenerateNode("c", nil, e)
+	d = treeModel.GenerateNode("d", f, g)
+	e = treeModel.GenerateNode("e", nil, h)
+	f = treeModel.GenerateNode("f", nil, nil)
+	g = treeModel.GenerateNode("g", nil, nil)
+	h = treeModel.GenerateNode("h", nil, nil)
 	root = a
 
-	fmt.Println(preOrderTraversalV2(&root))
-	fmt.Println(preOrderTraversal(&root))
-	fmt.Println(inOrderTraversalV2(&root))
-	fmt.Println(inOrderTraversal(&root))
+	fmt.Println(preOrderTraversalV2(root))
+	fmt.Println(preOrderTraversal(root))
+	fmt.Println(inOrderTraversalV2(root))
+	fmt.Println(inOrderTraversal(root))
 	//postOrderTraversalV1(root)
-	fmt.Println(postOrderTraversalV2(&root))
+	fmt.Println(postOrderTraversalV2(root))
 }

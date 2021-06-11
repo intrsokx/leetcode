@@ -1,5 +1,7 @@
 package main
 
+import "github.com/intrsokx/leetcode/model/treeModel"
+
 //给定一个二叉树, 找到该树中两个指定节点的最近公共祖先。
 //
 // 百度百科中最近公共祖先的定义为：“对于有根树 T 的两个节点 p、q，最近公共祖先表示为一个节点 x，满足 x 是 p、q 的祖先且 x 的深度尽可能大（
@@ -47,10 +49,10 @@ package main
 //leetcode submit region begin(Prohibit modification and deletion)
 /**
  * Definition for a binary tree node.
- * type TreeNode struct {
+ * type treeModel.TreeNode struct {
  *     Val int
- *     Left *TreeNode
- *     Right *TreeNode
+ *     Left *treeModel.TreeNode
+ *     Right *treeModel.TreeNode
  * }
  */
 
@@ -59,7 +61,7 @@ package main
 
 分治法：自顶向下分解问题，若当前节点的左子树或者右子树是两个节点的共同祖先，则返回子树节点,否则返回当前节点
 */
-func lowestCommonAncestor(root, p, q *TreeNode) *TreeNode {
+func lowestCommonAncestor(root, p, q *treeModel.TreeNode) *treeModel.TreeNode {
 	if root == nil {
 		return nil
 	}
@@ -87,9 +89,9 @@ func lowestCommonAncestor(root, p, q *TreeNode) *TreeNode {
 
 //leetcode submit region end(Prohibit modification and deletion)
 
-var parent map[*TreeNode]*TreeNode
+var parent map[*treeModel.TreeNode]*treeModel.TreeNode
 
-func dfs(node *TreeNode) {
+func dfs(node *treeModel.TreeNode) {
 	if node == nil {
 		return
 	}
@@ -105,8 +107,8 @@ func dfs(node *TreeNode) {
 
 //先根据子节点p，不断的向上查找其父节点，直到空为止，边遍历边将此路径做标记，这时我们就得到了一条从p到根节点的路径；
 //然后从q节点向上遍历，若两个节点有有公共父节点，那么在这条向上遍历的路径上就一定会有交点，则第一次遇到的交点为最近的公共父节点。
-func lowestCommonAncestor0(root, p, q *TreeNode) *TreeNode {
-	parent = make(map[*TreeNode]*TreeNode)
+func lowestCommonAncestor0(root, p, q *treeModel.TreeNode) *treeModel.TreeNode {
+	parent = make(map[*treeModel.TreeNode]*treeModel.TreeNode)
 	if root == nil {
 		return nil
 	}
@@ -114,7 +116,7 @@ func lowestCommonAncestor0(root, p, q *TreeNode) *TreeNode {
 
 	dfs(root)
 
-	visited := make(map[*TreeNode]bool)
+	visited := make(map[*treeModel.TreeNode]bool)
 	for p != nil {
 		visited[p] = true
 		p = parent[p]

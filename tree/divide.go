@@ -1,16 +1,19 @@
 package main
 
-import "fmt"
+import (
+	"fmt"
+	"github.com/intrsokx/leetcode/model/treeModel"
+)
 
 /**
 分治法应用
 */
 // V2：通过分治法遍历二叉树
-func preorderTraversal(root *TreeNode) []interface{} {
+func preorderTraversal(root *treeModel.TreeNode) []interface{} {
 	result := divideAndConquer(root)
 	return result
 }
-func divideAndConquer(node *TreeNode) []interface{} {
+func divideAndConquer(node *treeModel.TreeNode) []interface{} {
 	ret := make([]interface{}, 0)
 	if node == nil {
 		return ret
@@ -21,7 +24,7 @@ func divideAndConquer(node *TreeNode) []interface{} {
 	right := divideAndConquer(node.Right)
 
 	//conquer
-	ret	= append(ret, node.Val)
+	ret = append(ret, node.Val)
 	ret = append(ret, left...)
 	ret = append(ret, right...)
 	return ret
@@ -42,6 +45,7 @@ func mergeSort(nums []int) []int {
 
 	return merge(left, right)
 }
+
 //left && right 分别是有序的
 func merge(left, right []int) []int {
 	ret := make([]int, 0)
@@ -58,13 +62,11 @@ func merge(left, right []int) []int {
 	}
 
 	//因为nums[len(nums):]不会报错，而是返回一个长度为0的切片，所以这块可以不用判断l和r的长度，直接对ret追加
-	ret	= append(ret, left[l:]...)
+	ret = append(ret, left[l:]...)
 	ret = append(ret, right[r:]...)
 
 	return ret
 }
-
-
 
 /**
 快排由于是原地交换所以没有合并过程 传入的索引是存在的索引（如：0、length-1 等），如果越界的话，会导致程序崩溃
@@ -89,7 +91,7 @@ func partition(nums []int, start, end int) int {
 	p := nums[start]
 	idx := start
 
-	for i := start+1; i <= end; i++ {
+	for i := start + 1; i <= end; i++ {
 		if nums[i] < p {
 			nums[i], nums[idx] = nums[idx], nums[i]
 			idx++

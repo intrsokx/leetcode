@@ -1,4 +1,7 @@
 package main
+
+import "github.com/intrsokx/leetcode/model/treeModel"
+
 //给定一个二叉树，找出其最大深度。
 //
 // 二叉树的深度为根节点到最远叶子节点的最长路径上的节点数。
@@ -18,27 +21,26 @@ package main
 // Related Topics 树 深度优先搜索 递归
 // 👍 888 👎 0
 
-
 //leetcode submit region begin(Prohibit modification and deletion)
 /**
 * Definition for a binary tree node.
-* type TreeNode struct {
+* type treeModel.TreeNode struct {
 *     Val int
-*     Left *TreeNode
-*     Right *TreeNode
+*     Left *treeModel.TreeNode
+*     Right *treeModel.TreeNode
 * }
-*/
+ */
 
 //Definition for a binary tree node.
-//type TreeNode struct {
+//type treeModel.TreeNode struct {
 //    Val int
-//    Left *TreeNode
-//    Right *TreeNode
+//    Left *treeModel.TreeNode
+//    Right *treeModel.TreeNode
 //}
 
 //分治法
-func maxDepth(root *TreeNode) int {
-	if root	== nil {
+func maxDepth(root *treeModel.TreeNode) int {
+	if root == nil {
 		return 0
 	}
 
@@ -48,16 +50,16 @@ func maxDepth(root *TreeNode) int {
 	if left > right {
 		return 1 + left
 	}
-	return 1+right
+	return 1 + right
 }
 
 //按照层次遍历的思路，每遍历完一层，就给count++
-func maxDepth1(root *TreeNode) int {
+func maxDepth1(root *treeModel.TreeNode) int {
 	if root == nil {
 		return 0
 	}
 
-	var queue []*TreeNode
+	var queue []*treeModel.TreeNode
 	queue = append(queue, root)
 
 	count := 0
@@ -79,4 +81,5 @@ func maxDepth1(root *TreeNode) int {
 
 	return count
 }
+
 //leetcode submit region end(Prohibit modification and deletion)

@@ -1,5 +1,7 @@
 package main
 
+import "github.com/intrsokx/leetcode/model/treeModel"
+
 //给定一个二叉树，判断它是否是高度平衡的二叉树。
 //
 // 本题中，一棵高度平衡二叉树定义为：
@@ -42,14 +44,13 @@ package main
 // Related Topics 树 深度优先搜索 递归
 // 👍 695 👎 0
 
-
 //leetcode submit region begin(Prohibit modification and deletion)
 /**
  * Definition for a binary tree node.
- * type TreeNode struct {
+ * type treeModel.TreeNode struct {
  *     Val int
- *     Left *TreeNode
- *     Right *TreeNode
+ *     Left *treeModel.TreeNode
+ *     Right *treeModel.TreeNode
  * }
  */
 
@@ -61,8 +62,8 @@ tips:一般在工程实践中，不建议使用一个变量表示两种含义，
 
 不能计算一个最大高度跟最小高度之差来判断一棵树是否是平衡的。
 因为高度平衡二元树定义：一个二叉树每个节点 的左右两个子树的高度差的绝对值不超过 1 。
- */
-func maxDepthAndIsBalanced(node *TreeNode) (depth int, isBalance bool) {
+*/
+func maxDepthAndIsBalanced(node *treeModel.TreeNode) (depth int, isBalance bool) {
 	abs := func(num int) int {
 		if num < 0 {
 			return -num
@@ -77,19 +78,19 @@ func maxDepthAndIsBalanced(node *TreeNode) (depth int, isBalance bool) {
 	height1, ok1 := maxDepthAndIsBalanced(node.Left)
 	height2, ok2 := maxDepthAndIsBalanced(node.Right)
 
-	if !ok1	|| !ok2 || abs(height1-height2) > 1 {
+	if !ok1 || !ok2 || abs(height1-height2) > 1 {
 		return 0, false
 	}
 
 	if height1 > height2 {
-		return 1+height1, true
+		return 1 + height1, true
 	}
-	return 1+height2, true
+	return 1 + height2, true
 }
 
-func isBalanced(root *TreeNode) bool {
+func isBalanced(root *treeModel.TreeNode) bool {
 	var abs func(num int) int
-	var maxDepth func(node *TreeNode) int
+	var maxDepth func(node *treeModel.TreeNode) int
 
 	abs = func(num int) int {
 		if num < 0 {
@@ -97,7 +98,7 @@ func isBalanced(root *TreeNode) bool {
 		}
 		return num
 	}
-	maxDepth = func(node *TreeNode) int {
+	maxDepth = func(node *treeModel.TreeNode) int {
 		if node == nil {
 			return 0
 		}
@@ -109,9 +110,9 @@ func isBalanced(root *TreeNode) bool {
 		}
 
 		if left > right {
-			return 1+left
+			return 1 + left
 		}
-		return 1+right
+		return 1 + right
 	}
 
 	depth := maxDepth(root)
@@ -121,8 +122,9 @@ func isBalanced(root *TreeNode) bool {
 	return true
 }
 
-func isBalanced1(root *TreeNode) bool {
+func isBalanced1(root *treeModel.TreeNode) bool {
 	_, ok := maxDepthAndIsBalanced(root)
 	return ok
 }
+
 //leetcode submit region end(Prohibit modification and deletion)

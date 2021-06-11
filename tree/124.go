@@ -1,13 +1,16 @@
 package main
 
-import "math"
+import (
+	"github.com/intrsokx/leetcode/model/treeModel"
+	"math"
+)
 
 /**
  * Definition for a binary tree node.
- * type TreeNode struct {
+ * type treeModel.TreeNode struct {
  *     Val int
- *     Left *TreeNode
- *     Right *TreeNode
+ *     Left *treeModel.TreeNode
+ *     Right *treeModel.TreeNode
  * }
  */
 
@@ -17,7 +20,7 @@ import "math"
 思路：分治法，分为三种情况：1、左子树最大路径和最大，2、右子树最大路径和最大，3、左边+右边+根节点最大，
 需要保存两个变量：一个保存子树最大路径和，一个保存左右加根节点和，然后比较这个两个变量选择最大值即可
 */
-func maxPathSum(root *TreeNode) int {
+func maxPathSum(root *treeModel.TreeNode) int {
 	ret := helper(root)
 
 	return ret.MaxPath
@@ -28,7 +31,7 @@ type Result struct {
 	MaxPath    int
 }
 
-func helper(node *TreeNode) Result {
+func helper(node *treeModel.TreeNode) Result {
 	if node == nil {
 		return Result{
 			SinglePath: 0,
