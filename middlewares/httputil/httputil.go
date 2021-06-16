@@ -8,6 +8,7 @@ type HttpUtil struct {
 	http.Client
 }
 
+//在new一个新的中间件时，采用闭包+多个可选参数的方式来实现中间件的灵活性和扩展性
 func NewHttpUtil(opts ...Option) *HttpUtil {
 	cfg := &option{}
 	for _, opt := range opts {
