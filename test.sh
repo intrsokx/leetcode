@@ -1,12 +1,3 @@
-# leetcode
-
-### reference
-* [tree](./tree/tree.md)
-* [list](./list/list.md)
-
-
-### 获取项目git信息，在项目编译阶段注入到程序中
-```shell script
 commitId=`git rev-parse --short HEAD`
 name=`git log --pretty=format:“%an” $commitId -1`
 date=`git log --pretty=format:“%cd” $commitId -1`
@@ -16,7 +7,6 @@ go build -ldflags "-X main.VERSION=$commitId -X main.NAME=$name -X 'main.DATE=$d
 
 #"程序正常执行"
 ./test
-ehco  ""
+echo ""
 #"打印当前程序（二进制可执行文件）在github上提交的信息"
 ./test --info=true
-```
