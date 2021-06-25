@@ -71,10 +71,10 @@ func mergeTwoLists(l1 *ListNode, l2 *ListNode) *ListNode {
 }
 
 //leetcode submit region end(Prohibit modification and deletion)
-type ListNode struct {
-	Val  int
-	Next *ListNode
-}
+//type ListNode struct {
+//	Val  int
+//	Next *ListNode
+//}
 
 func main() {
 	l1 := &ListNode{
