@@ -3,6 +3,7 @@ package main
 import (
 	"fmt"
 	_ "github.com/intrsokx/leetcode/list/timeutil"
+	//根据官方包的定义，go:linkname只能用于不安全的包中
 	_ "unsafe"
 )
 
