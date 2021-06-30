@@ -14,6 +14,7 @@ var (
 )
 
 var isInfo = flag.Bool("info", false, "打印程序版本信息")
+var otherMsg = flag.String("msg", "", "程序的其他入参")
 
 func main() {
 	flag.Parse()
@@ -29,6 +30,7 @@ func main() {
 	}
 
 	fmt.Println("执行正常程序流程...")
+	fmt.Println("msg:", *otherMsg)
 }
 
 //test.sh
