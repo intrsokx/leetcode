@@ -58,6 +58,7 @@ func updateMatrix(mat [][]int) [][]int {
 			if mat[i][j] == 0 {
 				queue = append(queue, []int{i, j})
 			} else {
+				//将值为1的节点置为-1，用来标识在图中是否访问过该节点
 				mat[i][j] = -1
 			}
 		}
