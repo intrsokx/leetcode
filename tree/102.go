@@ -72,4 +72,37 @@ func levelOrder(root *treeModel.TreeNode) [][]int {
 	return ret
 }
 
+func levelOrderV2(root *treeModel.TreeNode) [][]int {
+	ret := make([][]int, 0)
+	if root == nil {
+		return ret
+	}
+
+	queue := make([]*treeModel.TreeNode, 0)
+	queue = append(queue, root)
+
+	var tmp *treeModel.TreeNode
+	for len(queue) > 0 {
+		l := len(queue)
+		level := make([]int, l)
+
+		for i := 0; i < l; i++ {
+			tmp = queue[i]
+			level = append(level, tmp.Val.(int))
+
+			if tmp.Left != nil {
+				queue = append(queue, tmp.Left)
+			}
+			if tmp.Right != nil {
+				queue = append(queue, tmp.Right)
+			}
+		}
+
+		ret = append(ret, level)
+		queue = queue[l:]
+	}
+
+	return ret
+}
+
 //leetcode submit region end(Prohibit modification and deletion)
