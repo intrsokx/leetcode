@@ -3,6 +3,7 @@
 ### reference
 * [tree](./tree/tree.md)
 * [list](./list/list.md)
+* [binary](./binary/binary.md)
 
 
 ### 获取项目git信息，在项目编译阶段注入到程序中
