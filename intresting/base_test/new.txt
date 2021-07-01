@@ -1,0 +1,14 @@
+goos: darwin
+goarch: amd64
+pkg: github.com/intrsokx/leetcode/intresting/base_test
+BenchmarkFib20-4   	   34537	     33594 ns/op
+BenchmarkFib20-4   	   35912	     32686 ns/op
+BenchmarkFib20-4   	   36327	     48851 ns/op
+BenchmarkFib20-4   	   36288	     39189 ns/op
+BenchmarkFib20-4   	   34352	     34919 ns/op
+BenchmarkFib20-4   	   32800	     37780 ns/op
+BenchmarkFib20-4   	   34551	     32859 ns/op
+BenchmarkFib20-4   	   37212	     32796 ns/op
+BenchmarkFib20-4   	   37309	     34182 ns/op
+BenchmarkFib20-4   	   34454	     45974 ns/op
+PASS

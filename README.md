@@ -6,7 +6,7 @@
 * [binary](./binary/binary.md)
 
 
-### 获取项目git信息，在项目编译阶段注入到程序中
+### [获取项目git信息，在项目编译阶段注入到程序中](./intresting/inject_git_info_in_program)
 ```shell script
 commitId=`git rev-parse --short HEAD`
 name=`git log --pretty=format:“%an” $commitId -1`
