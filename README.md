@@ -4,6 +4,7 @@
 * [tree](./tree/tree.md)
 * [list](./list/list.md)
 * [binary](./binary/binary.md)
+* [binary_search](./binary_search/binary_search.md)
 
 
 ### [获取项目git信息，在项目编译阶段注入到程序中](./intresting/inject_git_info_in_program)
