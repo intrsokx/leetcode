@@ -19,7 +19,7 @@ var otherMsg = flag.String("msg", "", "程序的其他入参")
 func main() {
 	flag.Parse()
 	if *isInfo {
-		gitDateFmt := pre + `Mon Jan 02 15:04:05 2006 -0700` + suff
+		gitDateFmt := pre + `Mon Jan 2 15:04:05 2006 +0800` + suff
 		dateFmt := pre + `2006-01-02 15:04:05` + suff
 		date, err := time.Parse(gitDateFmt, DATE)
 		if err != nil {
