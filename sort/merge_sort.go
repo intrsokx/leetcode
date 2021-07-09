@@ -15,6 +15,7 @@ func mergeSort(nums []int) []int {
 	left := mergeSort(nums[:mid])
 	right := mergeSort(nums[mid:])
 
+	//conquer
 	result := merge(left, right)
 	return result
 }

@@ -2,7 +2,7 @@ package main
 
 import "fmt"
 
-//思路：把一个数组分为左右两部分，左边的元素小于右边的元素
+//思路：把一个数组分为左右两部分，左边的元素小于右边的元素，然后分别对这两部分继续进行排序，直到整体有序
 func QuickSort(nums []int) []int {
 	quickSort(nums, 0, len(nums)-1)
 	return nums
@@ -17,7 +17,7 @@ func quickSort(nums []int, left, right int) {
 }
 
 func partition(nums []int, left, right int) int {
-	//选取最后一个元素作为基准元素
+	//选取最后一个元素作为基准元素（pivot）
 	p := nums[right]
 
 	i := left
