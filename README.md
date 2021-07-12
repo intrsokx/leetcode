@@ -13,4 +13,5 @@
 * [在go程序中注入git提交信息](./intresting/inject_git_info_in_program/readme.md)
 
 #### 推荐网站
+* [算法](https://greyireland.gitbook.io/algorithm-pattern/)
 * [labuladong算法小抄](https://labuladong.gitbook.io/algo/)
