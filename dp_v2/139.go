@@ -78,3 +78,12 @@ func main() {
 
 	fmt.Println(wordBreak("helloworl", []string{"hello", "world"}))
 }
+
+/**
+序列类型动态规划 小结：
+1、常见处理方式是给 0 位置占位，这样处理问题时可以一视同仁，初始化则在原来的 基础上length+1，返回结果f[n]
+2、状态可以为前i个
+3、初始化length+1
+4、取值 index=i-1
+5、返回值 f[n] 或者 f[m][n]
+*/
