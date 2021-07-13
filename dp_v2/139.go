@@ -40,7 +40,7 @@ func wordBreak(s string, wordDict []string) bool {
 		return true
 	}
 	//dp[i] 表示前i个字符能否被分割
-	//trans: dp[i] = dp[j] && n[j,i) in dict
+	//trans: dp[i] = dp[j] && n[j+1,i] in dict
 	//dp[0] = true
 
 	dict := make(map[string]bool, len(wordDict))
@@ -55,7 +55,7 @@ func wordBreak(s string, wordDict []string) bool {
 		for j := 0; j < i; j++ {
 			//j, i 是第几个字符
 			//dp[j] 表示前j个字符是否能被分割
-			if dp[j] && dict[s[j:i]] {
+			if dp[j] && dict[s[j+1-1:i]] {
 				dp[i] = true
 				break
 			}
