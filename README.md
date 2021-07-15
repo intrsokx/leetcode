@@ -8,6 +8,7 @@
 * [binary_search](./binary_search/binary_search.md)
 * [stack_queue](./stack_queue/stack_queue.md)
 * [sort](./sort/sort.md)
+* [dp](./dp/dp.md)
 
 #### other
 * [在go程序中注入git提交信息](./intresting/inject_git_info_in_program/readme.md)
