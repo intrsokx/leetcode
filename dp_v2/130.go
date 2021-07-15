@@ -110,7 +110,7 @@ func minimumTotalV2(triangle [][]int) int {
 			} else if j >= len(f[i-1]) {
 				f[i][j] = f[i-1][j-1] + triangle[i][j]
 			} else {
-				f[i][j] = min2num(f[i-1][j], f[i-1][j-1]) + triangle[i][j]
+				f[i][j] = min2numV5(f[i-1][j], f[i-1][j-1]) + triangle[i][j]
 			}
 		}
 	}
@@ -125,7 +125,7 @@ func minimumTotalV2(triangle [][]int) int {
 	return ret
 }
 
-func min2num(a, b int) int {
+func min2numV5(a, b int) int {
 	if a < b {
 		return a
 	}

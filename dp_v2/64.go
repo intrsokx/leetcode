@@ -84,7 +84,7 @@ func minPathSumV2(grid [][]int) int {
 			if j == 0 {
 				dp[j] += grid[i][j]
 			} else {
-				dp[j] = min2numV2(dp[j-1], dp[j]) + grid[i][j]
+				dp[j] = min2numV2_(dp[j-1], dp[j]) + grid[i][j]
 			}
 		}
 	}
@@ -92,7 +92,7 @@ func minPathSumV2(grid [][]int) int {
 	return dp[n-1]
 }
 
-func min2numV2(a, b int) int {
+func min2numV2_(a, b int) int {
 	if a < b {
 		return a
 	}
