@@ -10,7 +10,7 @@
 * [sort](./sort/sort.md)
 * [dp](./dp/dp.md)
 * [recursion](./recursion/recursion.md)
-* [slide_window](./slide_window/README.md)
+* [slide_window](./slide_window)
 
 #### other
 * [在go程序中注入git提交信息](./intresting/inject_git_info_in_program/readme.md)
