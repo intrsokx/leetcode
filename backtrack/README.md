@@ -6,13 +6,13 @@
 ### 回溯模板
 ```
 ret = [][]int
-func backtrack(选择列表,路径, &ret):
+func backtrack(选择列表, 起始位置, 路径, &ret):
     if 满足结束条件:
         ret.add(路径)
         return
     for 选择 in 选择列表:
         做选择
-        backtrack(选择列表,路径, &ret)
+        backtrack(选择列表, 下一次选择的起始位置, 路径, &ret)
         撤销选择
 ```
 
