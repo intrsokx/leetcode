@@ -12,6 +12,7 @@
 * [recursion](recursion)
 * [slide_window](./slide_window)
 * [binary_search_tree](./binary_search_tree)
+* [backtrack](./backtrack)
 
 #### other
 * [在go程序中注入git提交信息](intresting/inject_git_info_in_program)
