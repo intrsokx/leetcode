@@ -81,7 +81,9 @@ func reverseKGroup(head *ListNode, k int) *ListNode {
 	next := end.Next
 	end.Next = nil
 
+	//reverse first part
 	dummy.Next = reverseListV5(head)
+	//recursion another part
 	head.Next = reverseKGroup(next, k)
 
 	return dummy.Next
